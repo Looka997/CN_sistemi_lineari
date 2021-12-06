@@ -24,6 +24,15 @@ private:
 
     size_t index(int i, int j) const {return j + columns * i;}
 
+    void swapRows(int row1, int row2){
+        T tmp;
+        for (int j=0; j<columns; ++j){
+            tmp = m[j + columns * row1];
+            m[j + columns * row1] = m[j + columns * row2];
+            m[j + columns * row2] = tmp;
+        }
+    }
+
 public:
 
     matrix(unsigned int rows, unsigned int columns) : rows(rows), columns(columns){
