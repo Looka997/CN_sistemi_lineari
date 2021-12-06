@@ -24,6 +24,20 @@ private:
 
     size_t index(int i, int j) const {return j + columns * i;}
 
+    /**
+     * @returns index of first non zero number on the same column, starting from m[row][col], or -1
+     * if not found
+     */
+
+    int firstNonZeroRow(int row, int col){
+        int k = row * columns + col;
+        if (k >= rows * columns)
+            return -1;
+        if (m[k] !=0)
+            return k;
+        return firstNonZeroRow(row, col + columns);
+    }
+
     void swapRows(int row1, int row2){
         T tmp;
         for (int j=0; j<columns; ++j){
