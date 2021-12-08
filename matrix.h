@@ -57,6 +57,13 @@ private:
         }
     }
 
+    void rowScalar(int row_i, T lambda){
+        for (int j=0; j<columns; ++j){
+            T a = m[index(row_i,j)];
+            m[index(row_i, j)]*= lambda;
+        }
+    }
+
     int findPivot(int row, int col){
         int i;
         while((i=firstNonZeroRow(row, col))== -1 && col < columns) col++;
@@ -112,10 +119,15 @@ public:
         }
         cout << endl;
     }
-
     void gauss(){
         int row = 0, col = 0, i;
-        while(col < columns - 1 && row < rows - 1  && (i=findPivot(row, col)) != -1){
+        while(col < columns && row < rows && (i=findPivot(row, col)) != -1){
+            if (m[i]!=1){
+                rowScalar(i/columns, 1/m[i]);
+#ifdef SHOW_CANCELLATION
+                print();
+#endif
+            }
             applyE(i);
             col++;row++;
         };
