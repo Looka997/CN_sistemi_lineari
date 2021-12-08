@@ -1,6 +1,5 @@
 #include "matrix.h"
 #include "matrixFactory.h"
-#define DEBUG
 
 using namespace std;
 int main(){
@@ -27,6 +26,15 @@ int main(){
     matrix<num> B = mf.SpecificB();
 #ifdef DEBUG
     B.print();
+#endif
+#ifdef GAUSS
+    number* mat = new number[20]{0, 0, 1, 0, 3, 1, 3, 2, 1, 0, 4, 1, 0, 0, 6, 2, 0, 5, 4, 9};
+    matrix<num> ma (4,5, mat);
+    ma.print();
+    ma.gauss();
+#ifndef SHOW_CANCELLATION
+    ma.print();
+#endif
 #endif
 
 
