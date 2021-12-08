@@ -6,10 +6,12 @@
 
 #include <vector>
 #include <iostream>
+#include <stack>
 
 using std::vector;
 using std::cout;
 using std::endl;
+using std::stack;
 
 
 template <class T>
@@ -18,6 +20,11 @@ class matrix {
 private:
     unsigned rows = 0, columns = 0;
     T* m;
+
+    struct i_row{
+        int i;
+        int row;
+    };
 
     void init(T value) {
         for (int i=0; i<rows; ++i)
@@ -121,7 +128,12 @@ public:
     }
     void gauss(){
         int row = 0, col = 0, i;
+        stack<i_row> pivots;
+        i_row pivot;
         while(col < columns && row < rows && (i=findPivot(row, col)) != -1){
+            pivot.row = row;
+            pivot.i = i;
+            pivots.push(pivot);
             if (m[i]!=1){
                 rowScalar(i/columns, 1/m[i]);
 #ifdef SHOW_CANCELLATION
@@ -131,6 +143,11 @@ public:
             applyE(i);
             col++;row++;
         };
+        while(!pivots.empty()){
+            i_row p = pivots.top();
+            cout << p.i << " " << p.row << endl;
+            pivots.pop();
+        }
     }
 };
 
