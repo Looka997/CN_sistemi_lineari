@@ -101,6 +101,25 @@ private:
         }
     }
 
+    void completeReduction(stack<i_row> &pivots){
+        T lambda;
+        while(!pivots.empty()){
+            i_row p = pivots.top();
+            pivots.pop();
+            if (p.row == 0)
+                break;
+            for (int k=p.i-columns; k > 0; k-=columns){
+                if (m[k] != 0){
+                    lambda = - m[k]/m[p.i];
+                    rowSum(p.row,k/columns, lambda);
+#ifdef SHOW_CANCELLATION
+                    print();
+#endif
+                }
+            }
+        }
+    };
+
 public:
 
     matrix(unsigned int rows, unsigned int columns) : rows(rows), columns(columns){
@@ -143,11 +162,7 @@ public:
             applyE(i);
             col++;row++;
         };
-        while(!pivots.empty()){
-            i_row p = pivots.top();
-            cout << p.i << " " << p.row << endl;
-            pivots.pop();
-        }
+        completeReduction(pivots);
     }
 };
 
