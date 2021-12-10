@@ -1,11 +1,11 @@
 #ifndef LAB_SISTEMI_MATRIX_H
 #define LAB_SISTEMI_MATRIX_H
-#define SHOW_CANCELLATION
-#define GAUSS
-#define PASCAL
-#define TRIANG
-#define A
-#define B
+//#define SHOW_CANCELLATION
+//#define GAUSS
+//#define PASCAL
+//#define TRIANG
+//#define A
+//#define B
 
 #include <vector>
 #include <iostream>
@@ -166,6 +166,22 @@ public:
             col++;row++;
         };
         completeReduction(pivots);
+    }
+
+    void addSolutions(T* s){
+        T* new_m = new T [rows * columns + rows];
+        int i,j;
+        for(i=0; i<rows + 1; ++i){
+            int off = (1+columns) * i;
+            for (j=0; j<columns; ++j) {
+                new_m[j+off] = m[index(i,j)];
+            }
+            new_m[j+off] = s[i];
+        }
+        delete m;
+        m = new_m;
+        columns++;
+        print();
     }
 };
 
