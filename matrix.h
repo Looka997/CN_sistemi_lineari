@@ -1,8 +1,11 @@
 #ifndef LAB_SISTEMI_MATRIX_H
 #define LAB_SISTEMI_MATRIX_H
-//#define DEBUG
 #define SHOW_CANCELLATION
 #define GAUSS
+#define PASCAL
+#define TRIANG
+#define A
+#define B
 
 #include <vector>
 #include <iostream>
