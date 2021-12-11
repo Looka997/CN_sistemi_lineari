@@ -132,6 +132,10 @@ public:
 
     matrix(unsigned int rows, unsigned int columns, T* m) : rows(rows), columns(columns), m(m){}
 
+    ~matrix(){
+        delete [] m;
+    }
+
 
     inline unsigned int getRows() const { return this->rows; }
     inline unsigned int getCols() const { return this->columns; }
