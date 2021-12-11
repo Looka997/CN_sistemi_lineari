@@ -178,7 +178,7 @@ public:
             }
             new_m[j+off] = s[i];
         }
-        delete m;
+        delete [] m;
         m = new_m;
         columns++;
         print();
