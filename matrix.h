@@ -185,7 +185,9 @@ public:
         delete [] m;
         m = new_m;
         columns++;
+#ifdef SHOW_CANCELLATION
         print();
+#endif
     }
 };
 
