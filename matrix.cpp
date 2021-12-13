@@ -35,7 +35,9 @@ int main(){
 #endif
     number* s = new number[4]{4,3,2,1};
     ma.addSolutions(s);
-
-
+    number* s2 = new number[4]{7,9,2,4};
+    ma.addSolutions(s2);
+    delete [] s;
+    delete [] s2;
     return 1;
 }
