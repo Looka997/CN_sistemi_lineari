@@ -175,7 +175,7 @@ public:
     void addSolutions(T* s){
         T* new_m = new T [rows * columns + rows];
         int i,j;
-        for(i=0; i<rows + 1; ++i){
+        for(i=0; i<rows; ++i){
             int off = (1+columns) * i;
             for (j=0; j<columns; ++j) {
                 new_m[j+off] = m[index(i,j)];
