@@ -10,4 +10,5 @@ add_executable(lab_sistemi
         matrix.cpp
         matrix.h
         matrixFactory.h
+        flags.h
         )

@@ -1,15 +1,10 @@
 #ifndef LAB_SISTEMI_MATRIX_H
 #define LAB_SISTEMI_MATRIX_H
-#define SHOW_CANCELLATION
-#define GAUSS
-#define PASCAL
-#define TRIANG
-#define A
-#define B
 
 #include <vector>
 #include <iostream>
 #include <stack>
+#include "flags.h"
 
 using std::vector;
 using std::cout;
