@@ -1,11 +1,11 @@
 #ifndef LAB_SISTEMI_MATRIX_H
 #define LAB_SISTEMI_MATRIX_H
-//#define SHOW_CANCELLATION
-//#define GAUSS
-//#define PASCAL
-//#define TRIANG
-//#define A
-//#define B
+#define SHOW_CANCELLATION
+#define GAUSS
+#define PASCAL
+#define TRIANG
+#define A
+#define B
 
 #include <vector>
 #include <iostream>
@@ -159,14 +159,16 @@ public:
         while(col < columns && row < rows && (i=findPivot(row, col)) != -1){
             pivot.row = row;
             pivot.i = i;
-            pivots.push(pivot);
-            if (m[i]!=1){
-                rowScalar(i/columns, 1/m[i]);
+            if (i != (rows * columns)-1){
+                pivots.push(pivot);
+                if (m[i]!=1){
+                    rowScalar(i/columns, 1/m[i]);
 #ifdef SHOW_CANCELLATION
-                print();
+                    print();
 #endif
+                }
+                applyE(i);
             }
-            applyE(i);
             col++;row++;
         };
         completeReduction(pivots);
