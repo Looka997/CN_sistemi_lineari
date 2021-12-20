@@ -134,6 +134,8 @@ public:
 
     inline unsigned int getRows() const { return this->rows; }
     inline unsigned int getCols() const { return this->columns; }
+    inline T get(const int i, const int j){ return m[index(i,j)]; }
+    inline void set(const int i, const int j, T value){ m[index(i,j)] = value; }
 
     void print(){
         if (m == nullptr)
@@ -185,6 +187,22 @@ public:
 #ifdef SHOW_CANCELLATION
         print();
 #endif
+    }
+
+    matrix operator*(matrix &b) {
+        if (columns != b.getCols())
+            throw std::invalid_argument("a matrix columns have to be the same as b's");
+        matrix res(rows, b.getCols());
+        T tmp = 0 ;
+        for (int i=0; i<rows; ++i)
+            for (int j=0; j<b.getCols(); ++j)
+            {
+                tmp = 0;
+                for (int k=0; k<columns; ++k)
+                    tmp +=  m[index(i,k)] * b.get(k,j);
+                res.set(i, j, tmp);
+            }
+        return res;
     }
 };
 
