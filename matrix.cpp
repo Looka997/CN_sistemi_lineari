@@ -34,14 +34,13 @@ int main(){
 //    ma.print();
 #endif
 #endif
-//    number* s = new number[4]{4,3,2,1};
-//    ma.addSolutions(s);
-    number* s2 = new number[4]{1,1,1,1};
-    a.addSolutions(s2);
-    a.gauss();
-    b.addSolutions(s2);
-    b.gauss();
-//    delete [] s;
-    delete [] s2;
+//    number* s2 = new number[4]{1,1,1,1};
+//    a.addSolutions(s2);
+//    delete [] s2;
+    cout << a.infinityNorm() << endl;
+    cout << b.infinityNorm() << endl;
+    matrix<num>prod = a * b;
+    prod.print();
+    cout << prod.infinityNorm() << endl;
     return 1;
 }
