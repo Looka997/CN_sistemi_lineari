@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <stack>
+#include <math.h>
 #include "flags.h"
 
 using std::vector;
@@ -203,6 +204,18 @@ public:
                 res.set(i, j, tmp);
             }
         return res;
+    }
+
+    T infinityNorm() {
+        T sum, norm = 0;
+        for (int i=0; i<rows; ++i) {
+            sum=0;
+            for (int j=0; j<columns; ++j)
+                sum += fabs(m[index(i,j)]);
+            if (sum>norm)
+                norm = sum ;
+        }
+        return norm;
     }
 };
 
