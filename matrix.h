@@ -25,12 +25,6 @@ private:
         int row;
     };
 
-    void init(T value) {
-        for (int i=0; i<rows; ++i)
-            for (int j=0; j<columns; ++j)
-                m[i+j] = value;
-    }
-
     size_t index(int i, int j) const {return j + columns * i;}
 
     /**
@@ -121,9 +115,11 @@ private:
 
 public:
 
+    /**
+    * @creates uninitialized matrix. The user is supposed to call init(T value) right after
+    */
     matrix(unsigned int rows, unsigned int columns) : rows(rows), columns(columns){
         m = new T[rows * columns];
-        init(0);
     }
 
     matrix(unsigned int rows, unsigned int columns, T* m) : rows(rows), columns(columns), m(m){}
@@ -132,7 +128,11 @@ public:
         delete [] m;
     }
 
-
+    void init(T value) {
+        for (int i=0; i<rows; ++i)
+            for (int j=0; j<columns; ++j)
+                m[i+j] = value;
+    }
     inline unsigned int getRows() const { return this->rows; }
     inline unsigned int getCols() const { return this->columns; }
     inline T get(const int i, const int j){ return m[index(i,j)]; }
