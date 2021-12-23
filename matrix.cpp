@@ -55,6 +55,14 @@ void workMatrix(matrix<num> &a){
 #ifndef SHOW_CANCELLATION
     a.print();
 #endif
+    num b_norm = b.infinityNorm();
+    num *distortion = new num[b.getRows()]{1, 1, 1, 1};
+    for(int i=0, e=1; i<b.getRows(); ++i, ++e)
+        distortion[i] = pow(-1,e) * 0.01;
+    matrix<num> d(b.getRows(), 1, distortion);
+    matrix<num> delta_d = d.scalar(b_norm);
+    matrix<num> new_solutions = b + delta_d;
+
 
 
 }
