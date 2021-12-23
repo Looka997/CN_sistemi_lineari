@@ -225,6 +225,17 @@ public:
         return res;
     }
 
+    matrix operator*(T lambda){
+        matrix res(rows,columns);
+        int off;
+        for (int i=0; i<rows; ++i)
+            for (int j=0; j<columns; ++j){
+                off = i*rows + j;
+                res.m[off] = m[off] * lambda;
+            }
+        return res;
+    }
+
     T infinityNorm() {
         T sum, norm = 0;
         for (int i=0; i<rows; ++i) {
