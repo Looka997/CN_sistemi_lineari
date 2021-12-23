@@ -205,7 +205,7 @@ public:
                 tmp = 0;
                 for (int k=0; k<columns; ++k)
                     tmp +=  m[index(i,k)] * b.m[b.columns*k + j];
-                res.m[i*rows + j] = tmp;
+                res.m[i*b.columns + j] = tmp;
             }
         return res;
     }
@@ -219,7 +219,7 @@ public:
         int off;
         for (int i=0; i<rows; ++i)
             for (int j=0; j<columns; ++j){
-                off = i*rows + j;
+                off = i*columns+ j;
                 res.m[off] = m[off] + b.m[off];
             }
         return res;
@@ -230,7 +230,7 @@ public:
         int off;
         for (int i=0; i<rows; ++i)
             for (int j=0; j<columns; ++j){
-                off = i*rows + j;
+                off = i*columns + j;
                 res.m[off] = m[off] * lambda;
             }
         return res;
