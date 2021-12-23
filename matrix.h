@@ -225,7 +225,7 @@ public:
         return res;
     }
 
-    matrix operator*(T lambda){
+    matrix scalar(T lambda){
         matrix res(rows,columns);
         int off;
         for (int i=0; i<rows; ++i)
