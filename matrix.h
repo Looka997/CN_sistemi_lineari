@@ -195,13 +195,12 @@ public:
     }
 
     matrix operator*(matrix &b) {
-        int b_columns = b.columns;
-        if (columns != b_columns)
-            throw std::invalid_argument("a matrix columns have to be the same as b's");
-        matrix res(rows, b_columns);
+        if (columns != b.rows)
+            throw std::invalid_argument("a matrix columns have to be the same as b's rows");
+        matrix res(rows, b.columns);
         T tmp = 0 ;
         for (int i=0; i<rows; ++i)
-            for (int j=0; j<b_columns; ++j)
+            for (int j=0; j<b.columns; ++j)
             {
                 tmp = 0;
                 for (int k=0; k<columns; ++k)
