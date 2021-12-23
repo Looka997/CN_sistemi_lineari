@@ -195,16 +195,17 @@ public:
     }
 
     matrix operator*(matrix &b) {
-        if (columns != b.getCols())
+        int b_columns = b.columns;
+        if (columns != b_columns)
             throw std::invalid_argument("a matrix columns have to be the same as b's");
-        matrix res(rows, b.getCols());
+        matrix res(rows, b_columns);
         T tmp = 0 ;
         for (int i=0; i<rows; ++i)
-            for (int j=0; j<b.getCols(); ++j)
+            for (int j=0; j<b_columns; ++j)
             {
                 tmp = 0;
                 for (int k=0; k<columns; ++k)
-                    tmp +=  m[index(i,k)] * b.get(k,j);
+                    tmp +=  m[index(i,k)] * b.m[index(k,j)];
                 res.set(i, j, tmp);
             }
         return res;
