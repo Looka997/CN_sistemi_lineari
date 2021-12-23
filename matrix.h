@@ -190,7 +190,7 @@ public:
 #endif
     }
 
-    void addSolutions(matrix<T> b){
+    void addSolutions(matrix<T> &b){
         addSolutions(b.m);
     }
 
