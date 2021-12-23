@@ -190,6 +190,10 @@ public:
 #endif
     }
 
+    void addSolutions(matrix<T> b){
+        addSolutions(b.m);
+    }
+
     matrix operator*(matrix &b) {
         if (columns != b.getCols())
             throw std::invalid_argument("a matrix columns have to be the same as b's");
