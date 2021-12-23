@@ -205,7 +205,7 @@ public:
                 tmp = 0;
                 for (int k=0; k<columns; ++k)
                     tmp +=  m[index(i,k)] * b.m[b.columns*k + j];
-                res.set(i, j, tmp);
+                res.m[i*rows + j] = tmp;
             }
         return res;
     }
