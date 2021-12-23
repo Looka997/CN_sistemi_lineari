@@ -210,6 +210,21 @@ public:
         return res;
     }
 
+    matrix operator+(matrix &b){
+        if (columns != b.columns)
+            throw std::invalid_argument("a matrix columns have to be the same as b's");
+        if (rows != b.rows)
+            throw std::invalid_argument("a matrix rows have to be the same as b's");
+        matrix res(rows, columns);
+        int off;
+        for (int i=0; i<rows; ++i)
+            for (int j=0; j<columns; ++j){
+                off = i*rows + j;
+                res.m[off] = m[off] + b.m[off];
+            }
+        return res;
+    }
+
     T infinityNorm() {
         T sum, norm = 0;
         for (int i=0; i<rows; ++i) {
