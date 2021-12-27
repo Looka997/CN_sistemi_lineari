@@ -124,6 +124,8 @@ public:
 
     matrix(unsigned int rows, unsigned int columns, T* m) : rows(rows), columns(columns), m(m){}
 
+    matrix(matrix const &a): rows(a.rows), columns(a.columns), m(a.m){}
+
     ~matrix(){
         delete [] m;
     }
