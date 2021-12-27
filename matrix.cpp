@@ -62,6 +62,8 @@ void workMatrix(matrix<num> &a){
     matrix<num> d(b.getRows(), 1, distortion);
     matrix<num> delta_d = d.scalar(b_norm);
     matrix<num> new_solutions = b + delta_d;
+    cout << "Soluzioni b+deltaB" << endl;
+    new_solutions.print();
     cout << "Matrice con soluzioni b+deltaB:" << endl;
     a_copy.addSolutions(new_solutions);
     a_copy.print();
