@@ -124,7 +124,13 @@ public:
 
     matrix(unsigned int rows, unsigned int columns, T* m) : rows(rows), columns(columns), m(m){}
 
-    matrix(matrix const &a): rows(a.rows), columns(a.columns), m(a.m){}
+    matrix(matrix const& b) : rows(rows), columns(columns){
+        for (int i=0; i<rows; ++i)
+            for (int j=0; j<columns; ++j) {
+                int off = i*columns + j;
+                m[off] = b.m[off];
+            }
+    }
 
     ~matrix(){
         delete [] m;
@@ -133,7 +139,7 @@ public:
     void init(T value) {
         for (int i=0; i<rows; ++i)
             for (int j=0; j<columns; ++j)
-                m[i+j] = value;
+                m[i*columns + j] = value;
     }
     inline unsigned int getRows() const { return this->rows; }
     inline unsigned int getCols() const { return this->columns; }
