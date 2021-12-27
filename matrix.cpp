@@ -49,8 +49,10 @@ void workMatrix(matrix<num> &a){
     matrix<num> b = a * x;
     cout << "Vettore b generato:" << endl;
     b.print();
+    cout << "Matrice con soluzioni b:" << endl;
     a.addSolutions(b);
     a.print();
+    cout << "Matrice ridotta:" << endl;
     a.gauss();
 #ifndef SHOW_CANCELLATION
     a.print();
@@ -67,6 +69,7 @@ void workMatrix(matrix<num> &a){
     cout << "Matrice con soluzioni b+deltaB:" << endl;
     a_copy.addSolutions(new_solutions);
     a_copy.print();
+    cout << "Matrice ridotta:" << endl;
     a_copy.gauss();
 #ifndef SHOW_CANCELLATION
     a_copy.print();
