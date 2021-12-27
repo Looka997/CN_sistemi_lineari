@@ -124,7 +124,8 @@ public:
 
     matrix(unsigned int rows, unsigned int columns, T* m) : rows(rows), columns(columns), m(m){}
 
-    matrix(matrix const& b) : rows(rows), columns(columns){
+    matrix(matrix const& b) : rows(b.rows), columns(b.columns){
+        m = new T [rows * columns];
         for (int i=0; i<rows; ++i)
             for (int j=0; j<columns; ++j) {
                 int off = i*columns + j;
