@@ -139,7 +139,7 @@ public:
     void init(T value) {
         for (int i=0; i<rows; ++i)
             for (int j=0; j<columns; ++j)
-                m[i+j] = value;
+                m[i*columns + j] = value;
     }
     inline unsigned int getRows() const { return this->rows; }
     inline unsigned int getCols() const { return this->columns; }
