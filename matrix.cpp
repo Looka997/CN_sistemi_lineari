@@ -39,7 +39,7 @@ int main(){
 
 void workMatrix(matrix<num> &a){
     a.print();
-
+    matrix<num> a_copy(a);
     /* Esercizio 1 */
     cout << "Norma infinito A: " << a.infinityNorm() << endl;
 
@@ -62,7 +62,13 @@ void workMatrix(matrix<num> &a){
     matrix<num> d(b.getRows(), 1, distortion);
     matrix<num> delta_d = d.scalar(b_norm);
     matrix<num> new_solutions = b + delta_d;
-
+    cout << "Matrice con soluzioni b+deltaB:" << endl;
+    a_copy.addSolutions(new_solutions);
+    a_copy.print();
+    a_copy.gauss();
+#ifndef SHOW_CANCELLATION
+    a_copy.print();
+#endif
 
 
 }
