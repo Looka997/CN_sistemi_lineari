@@ -1,4 +1,4 @@
-#define SHOW_CANCELLATION
+//#define SHOW_CANCELLATION
 #define GAUSS
 #define PASCAL
 #define TRIANG
