@@ -30,10 +30,6 @@ int main(){
     cout << "with matrix pascal:" << endl;
     workMatrix(pascal);
 #endif
-
-//    number* s2 = new number[4]{1,1,1,1};
-//    a.addSolutions(s2);
-//    delete [] s2;
     return 1;
 }
 
