@@ -124,6 +124,14 @@ public:
 
     matrix(unsigned int rows, unsigned int columns, T* m) : rows(rows), columns(columns), m(m){}
 
+    matrix(matrix const& b) : rows(rows), columns(columns){
+        for (int i=0; i<rows; ++i)
+            for (int j=0; j<columns; ++j) {
+                int off = i*columns + j;
+                m[off] = b.m[off];
+            }
+    }
+
     ~matrix(){
         delete [] m;
     }
