@@ -1,5 +1,6 @@
 #include "matrix.h"
 #include "matrixFactory.h"
+#include "iomanip"
 
 using namespace std;
 typedef float num;
@@ -27,13 +28,15 @@ int main(){
 #endif
 #ifdef PASCAL
     matrix<num> pascal = mf.Pascal(10);
-    cout << "with matrix pascal:" << endl;
     workMatrix(pascal);
 #endif
     return 1;
 }
 
 void workMatrix(matrix<num> &a){
+#ifdef HIGH_PRECISION
+    cout << setprecision(40);
+#endif
     a.print();
     matrix<num> a_copy(a);
     /* Esercizio 1 */
